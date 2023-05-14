@@ -1,11 +1,9 @@
 #!/bin/bash
 
-curl=$(which curl)
-outfile="output.txt"
+echo "TODAY'S NEWS:"
 
-url="https://techcrunch.com/"
+# Scrapping the data and storing it into the output.txt file
+text="`curl -s "https://techcrunch.com/" | grep -A 1 'class="post-block__title__link"'`"
 
+echo $text
 
-function dump_webpage() {
-	soijkjsdhf
-}
