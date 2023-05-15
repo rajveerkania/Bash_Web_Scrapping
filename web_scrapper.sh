@@ -8,27 +8,32 @@ curl -s -o output.txt "https://techcrunch.com/"
 grep -A 1 "post-block__title__link" output.txt | tail -n +6 | sed 's/^[[:space:]]*//' - > output2.txt
 
 #Storing the data for inside a variable for the while loop
+
 file_content=$(cat output2.txt)
 
-#Initialising an array for iterating over title
-array=()
+#Initialising  arrays for iterating over titles and links
+titles=()
+links=()
+
+
+# Storing every titles in titles array
 while read -r line; do
-  array+=( "$line" )
+  titles+=( "$line" )
 done < <(cat output2.txt | grep '^[A-Z]' | sed 's/<\/a>//g')
 
-#Flag variable for iterating in the while loop
-flag=0
+#Storing every links in links array
+while read -r line; do
+	links+=( "$line" )
+done < <(cat output2.txt | grep -oP '(?<=<a href=").*?(?="\s|$)')
 
-while IFS='<' read -r line;
-do
-	echo "Title: ${array[$flag]}"
-	flag=$((flag + 1))
-  
-  if [[ $line =~ href=\"(.*)\".* ]]; then
-    link=$(echo "${BASH_REMATCH[1]}" | sed 's/" class="post-block__title__link//g')
-    echo "Link: $link"
-  fi
-done <<< "$file_content"
+#Header
+echo -e "\n\nToday's news: \n\n"
 
+#Prinitg the news
+for i in "${!titles[@]}"; do
 
-rm output.txt output2.txt output3.txt
+	echo -e "Title: ${titles[$i]}\nRead More: ${links[$i]}\n\n"
+done
+
+# Removing the temporary files
+rm output.txt output2.txt
