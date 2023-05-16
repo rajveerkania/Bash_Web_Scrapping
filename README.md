@@ -14,10 +14,23 @@ Clone the repository in your desired directory
 ```terminal
 git clone https://github.com/rajveerkania/Bash_Web_Scrapping.git .
 ```
-
 ## Tools
 The bash script comprises tools like curl, grep, and awk.
 
+## How to Use
+After cloning the repository, make the "web_scrapper.sh" file executable with the help of the following command on terminal
+
+```terminal
+chmod +777 web_scrapper.sh
+```
+
+Next, execute the bash file by
+
+```terminal
+./web_scrapper.sh
+```
+
+Happy Reading!
 
 ## Contributing
 
