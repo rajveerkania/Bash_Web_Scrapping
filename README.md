@@ -2,7 +2,9 @@
 
 This project uses shell programming to scrape the latest news from the TechCrunch website and display it on the terminal. The project is designed to help you stay up-to-date on TechCrunch's latest news and learn how to use shell programming to scrape web pages and display web page content on the terminal.
 
-![image of TechCrunch](image.png)
+<p align="center">
+  <img src="image.png" alt="TechCrunch's logo"/>
+</p>
 
 ## Installation
 
