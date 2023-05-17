@@ -1,9 +1,9 @@
 #!/bin/bash
 
-
 # Extracting the html file from the server
-curl -o output.txt "https://techcrunch.com/"
+curl -s -o output.txt "https://techcrunch.com/"
 
+clear
 #For the first news heading
 grep -nm 1 "\<a class=\"post-block__title__link" output.txt > heading.txt
 
