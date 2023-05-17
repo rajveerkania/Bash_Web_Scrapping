@@ -33,7 +33,15 @@ while read -r line; do
 done < <(cat output2.txt | grep -oP '(?<=<a href=").*?(?="\s|$)')
 
 #Header
-echo -e "\n\nToday's news: \n\n"
+echo -e "\n"
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+COLUMNS=$(tput cols) 
+title="Welcome to TermiNews" 
+printf "%*s\n" $(((${#title}+$COLUMNS)/2)) "$title"
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+echo -e "\n"
 
 #Prinitg the news
 echo -e "Heading: $heading\nRead More: $link\n\n"
@@ -44,7 +52,7 @@ for i in "${!titles[@]}"; do
 	echo -e "Heading: ${titles[$i]}\nRead More: ${links[$i]}\n\n"
 done
 
-echo -e "\n\nRead more on : https://techcrunch.com/"
+echo -e "\nRead more on : https://techcrunch.com/"
 
 # Removing the temporary files
 rm output.txt output2.txt heading.txt
