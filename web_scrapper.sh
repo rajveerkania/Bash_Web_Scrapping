@@ -46,7 +46,6 @@ echo -e "\n"
 #Prinitg the news
 echo -e "Heading: $heading\nRead More: $link\n\n"
 
-
 for i in "${!titles[@]}"; do
 
 	echo -e "Heading: ${titles[$i]}\nRead More: ${links[$i]}\n\n"
